@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlarmaActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡HAY UNA DENUNCIA A 200 METROS DE TI!"
+        android:textColor="@android:color/black"
+        android:textSize="35sp"
+        android:gravity="center"/>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center">
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/imgPerfil"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:src="@drawable/baseline_person_24"/>
+       <TextView
+           android:id="@+id/txtnombre"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Nombre del denunciante: "
+           android:textStyle="bold"
+           android:textColor="@color/black"/>
+   </LinearLayout>
+    <ImageView
+        android:id="@+id/imgFondo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/baseline_error_outline_24"
+        android:contentDescription="advertencia" />
+    <Button
+        android:id="@+id/btnhacer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hacer algo"
+        android:backgroundTint="@color/teal_200"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="32dp"/>
+    <Button
+        android:id="@+id/btnnohacer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ignorar"
+        android:backgroundTint="@color/rojo"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
