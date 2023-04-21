@@ -160,7 +160,6 @@ public class PrncipalActivity extends AppCompatActivity {
             }
         });
     }
-
     private void savePhone(String phoneNumber, String cod_user) {
         String url = "https://tupoint.com/apk/guardar_telefono.php";
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
