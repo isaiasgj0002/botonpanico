@@ -1,19 +1,12 @@
 package com.ideandesystems.tupoint;
 import android.app.Service;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.IBinder;
-import android.provider.Settings;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,14 +29,16 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 public class DenunciaService extends Service {
-    private String cod_user;
+    private String cod_user, rolUsuario;
     private FusedLocationProviderClient mFusedLocationClient;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null && intent.getExtras() != null) {
             cod_user = intent.getExtras().getString("cod_user");
+            rolUsuario = intent.getExtras().getString("rol");
         }else{
             getCodUserWithFileTXT();
+            rolUsuario = "Usuario";
         }
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         Timer timer = new Timer();
@@ -79,6 +74,11 @@ public class DenunciaService extends Service {
                                                 Log.i("Cod_user",cod_user);
                                                 // Definir el radio de detección en kilómetros
                                                 double radio = 0.2;
+                                                if(rolUsuario.equals("Policia")){
+                                                    radio = 0.5;
+                                                }else if(rolUsuario.equals("Vigilante")){
+                                                    radio = 0.3;
+                                                }
                                                 //String codigo = ((Activity) PrncipalActivity.class).getIntent().getExtras().get("cod_user").toString();
                                                 // Recorrer los datos obtenidos
                                                 if(data.length()>0){
@@ -120,7 +120,6 @@ public class DenunciaService extends Service {
         }, 0, 60000);
         return START_STICKY;
     }
-
     private void save(double latitudUsuario, double longitudUsuario, String codigo) {
         String lat = String.valueOf(latitudUsuario);
         String lon = String.valueOf(longitudUsuario);

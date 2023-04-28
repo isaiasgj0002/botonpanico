@@ -32,7 +32,11 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import android.Manifest;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +72,8 @@ public class PrncipalActivity extends AppCompatActivity {
         String cod_user = getIntent().getExtras().get("cod_user").toString();
         verificarUbicacionActivada();
         Intent intent = new Intent(this, DenunciaService.class);
+        String rolUsuario = RolValidator.getRol(this, cod_user, "https://tupoint.com/apk/rol.php");
+        intent.putExtra("rol",rolUsuario);
         intent.putExtra("cod_user", cod_user);
         startService(intent);
         btnphone.setOnClickListener(new View.OnClickListener() {
@@ -100,10 +106,21 @@ public class PrncipalActivity extends AppCompatActivity {
         openlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://www.tupoint.com";
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(url));
-                startActivity(intent);
+                String url = "https://www.tupoint.com/accion.php";
+                try{
+                    FileInputStream fileInputStream = openFileInput("datos.txt");
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+                    String firstLine = bufferedReader.readLine();
+                    String secondline = bufferedReader.readLine();
+                    bufferedReader.close();
+                    Intent intent = new Intent(PrncipalActivity.this, WebActivity.class);
+                    intent.putExtra("url", url);
+                    intent.putExtra("correo",firstLine);
+                    intent.putExtra("password",secondline);
+                    startActivity(intent);
+                }catch(Exception ex){
+                    Toast.makeText(PrncipalActivity.this, "Se produjo un error, intenta cerrar sesion y volver a iniciarla", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnactivar.setOnClickListener(new View.OnClickListener() {

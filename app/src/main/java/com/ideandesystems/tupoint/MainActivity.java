@@ -15,7 +15,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -144,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             en los EditTexts, deben ser convertidos a String y deben borrarse los espacios en blanco extras
              */
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> data = new HashMap<String,String>();
                 data.put("user",email.getText().toString().trim());
                 data.put("contra",password.getText().toString().trim());
