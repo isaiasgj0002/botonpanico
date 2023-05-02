@@ -27,7 +27,7 @@ public class RolValidator {
                     String[] opciones = {"Policia", "Vigilante","Usuario"};
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setCancelable(false);
-                    builder.setTitle("Que eres?");
+                    builder.setTitle("¿Que erés?");
                     builder.setItems(opciones, (dialog, item) -> {
                         // Acción a realizar cuando se selecciona una opción
                         if (item == 0) {

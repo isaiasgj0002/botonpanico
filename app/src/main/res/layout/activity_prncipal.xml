@@ -94,7 +94,7 @@
             android:layout_height="250dp"
             android:scaleType="fitXY"
             android:background="@color/transparent"
-            android:src="@drawable/botonnuevo"
+            android:src="@drawable/botonnuevosinfondo"
             android:text="Localizar"
             android:layout_gravity="center"
             android:contentDescription="TODO" />
