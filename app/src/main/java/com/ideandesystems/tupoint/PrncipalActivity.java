@@ -11,12 +11,10 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -43,10 +41,8 @@ import java.util.Map;
 public class PrncipalActivity extends AppCompatActivity {
     private FusedLocationProviderClient mFusedLocationClient;
     TextView correoView, latView, longView, titulo;
-    Button btncerrarsesion, openlink;
-    ImageButton btnactivar, btnphone;
+    ImageButton btnactivar, btnphone, btncerrarsesion, openlink;
     ProgressBar progressBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

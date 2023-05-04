@@ -1,77 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PrncipalActivity">
+    tools:context=".PrncipalActivity"
+    android:background="#06162E">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BOTÓN DE PÁNICO"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:layout_marginTop="25dp"/>
         <ImageView
             android:layout_width="400dp"
             android:layout_height="100dp"
-            android:src="@drawable/pnglogotp" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
-            <Button
-                android:id="@+id/btncerrarsesion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cerrar sesion"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/orange"/>
-            <Button
-                android:id="@+id/openlinkprincipal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Abrir web"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/amarillo"/>
-            <ImageButton
-                android:id="@+id/getphone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_phone_24"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/amarillo"/>
-        </LinearLayout>
+            android:src="@drawable/pnglogotp"
+            android:contentDescription="logo" />
         <TextView
             android:id="@+id/txtcorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="correo"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textColor="@color/white"/>
         <TextView
             android:id="@+id/txtlast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="Ultima Ubicacion registrada:"
-            android:layout_marginLeft="20dp"
-            android:visibility="gone"/>
+            android:layout_marginStart="20dp"
+            android:visibility="gone"
+            android:textColor="@color/white"/>
         <TextView
             android:id="@+id/txtlat"
             android:layout_width="match_parent"
@@ -79,7 +39,8 @@
             android:textSize="20sp"
             android:text="latitud"
             android:layout_marginLeft="20dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:textColor="@color/white"/>
         <TextView
             android:id="@+id/txtlong"
             android:layout_width="match_parent"
@@ -87,7 +48,8 @@
             android:textSize="20sp"
             android:text="longitud"
             android:layout_marginLeft="20dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:textColor="@color/white"/>
         <ImageButton
             android:id="@+id/btnlocate"
             android:layout_width="250dp"
@@ -97,8 +59,59 @@
             android:src="@drawable/botonnuevosinfondo"
             android:text="Localizar"
             android:layout_gravity="center"
-            android:contentDescription="TODO" />
-
+            android:contentDescription="Pánico" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BOTÓN DE PÁNICO"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/white"
+            android:backgroundTint="#04400a"
+            android:background="@drawable/roundes_corners"
+            android:padding="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:background="@drawable/roundes_corners">
+            <ImageButton
+                android:id="@+id/btncerrarsesion"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/baseline_logout_24"
+                android:text="Cerrar sesion"
+                android:layout_marginTop="0dp"
+                android:backgroundTint="@color/orange"
+                android:contentDescription="logout" />
+            <ImageButton
+                android:id="@+id/openlinkprincipal"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Abrir web"
+                android:src="@drawable/baseline_web_24"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/amarillo"
+                android:contentDescription="openweb" />
+            <ImageButton
+                android:id="@+id/getphone"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/baseline_phone_24"
+                android:textColor="@color/black"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/amarillo"
+                android:contentDescription="Telefono" />
+        </LinearLayout>
         <ProgressBar
             android:id="@+id/progressbarreportar"
             android:layout_width="match_parent"
@@ -107,6 +120,6 @@
             android:indeterminateTint="@color/white"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:visibility="invisible"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="0dp" />
     </LinearLayout>
 </ScrollView>
