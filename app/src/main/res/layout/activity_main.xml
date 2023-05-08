@@ -1,111 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
-            android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:src="@drawable/pnglogotp"
-            android:layout_gravity="center"/>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            android:backgroundTint="@color/grisClaro">
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:orientation="vertical">
-               <EditText
-                   android:id="@+id/txtemail"
-                   android:layout_width="match_parent"
-                   android:layout_height="48dp"
-                   android:hint="Correo"
-                   android:background="@drawable/custom_edit_text_line"
-                   android:paddingBottom="8dp"
-                   android:maxLines="1"
-                   android:layout_marginTop="15dp"
-                   android:gravity="center"
-                   android:textColor="@color/black"
-                   android:textColorHint="@color/black"
-                   android:textSize="15sp"/>
-               <EditText
-                   android:id="@+id/txtpassword"
-                   android:layout_width="match_parent"
-                   android:layout_height="48dp"
-                   android:hint="Contraseña"
-                   android:background="@drawable/custom_edit_text_line"
-                   android:paddingBottom="8dp"
-                   android:maxLines="1"
-                   android:layout_marginTop="15dp"
-                   android:inputType="textPassword"
-                   android:gravity="center"
-                   android:textColor="@color/black"
-                   android:textColorHint="@color/black"
-                   android:textSize="15sp"
-                   android:layout_marginBottom="10dp"/>
-           </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <CheckBox
-            android:id="@+id/checkBoxShowPassword"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Mostrar contraseña"
-            android:textSize="15sp"
-            android:layout_gravity="center"/>
+            android:layout_height="350dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/imgnew"
+            android:layout_marginBottom="5dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-            <Button
-                android:id="@+id/btnregistrar"
+            android:background="@color/orange"
+            android:layout_marginBottom="5dp">
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/rounded_button"
-                android:backgroundTint="@color/verde"
-                android:text="Registrate aqui"
-                android:textSize="15sp"
-                android:padding="9dp"
-                android:textColor="@color/white"/>
-            <Button
-                android:id="@+id/btnguardar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/rounded_button"
-                android:text="Acceder"
-                android:textSize="15sp"
-                android:backgroundTint="@color/orange"
-                android:layout_marginStart="20dp"
-                android:padding="9dp"/>
+                android:layout_height="90dp"
+                android:src="@drawable/logoblack"
+                android:contentDescription="Logo" />
         </LinearLayout>
-        <ProgressBar
-            android:id="@+id/progressbarlogin"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/white"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:visibility="gone"
-            android:layout_marginTop="20dp"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logobtnpanico"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="imglogo" />
+            android:orientation="vertical"
+            android:background="@color/black"
+            android:paddingBottom="200dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                android:backgroundTint="@color/white"
+                android:padding="30dp"
+                android:layout_gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+                    <EditText
+                        android:id="@+id/txtemail"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Correo"
+                        android:background="@drawable/custom_edit_text_line"
+                        android:backgroundTint="@color/black"
+                        android:paddingBottom="8dp"
+                        android:maxLines="1"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp"/>
+                    <EditText
+                        android:id="@+id/txtpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="Contraseña"
+                        android:background="@drawable/custom_edit_text_line"
+                        android:backgroundTint="@color/black"
+                        android:paddingBottom="8dp"
+                        android:maxLines="1"
+                        android:layout_marginTop="15dp"
+                        android:inputType="textPassword"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="10dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <CheckBox
+                android:id="@+id/checkBoxShowPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Mostrar contraseña"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:button="@drawable/circle_checkbox"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="10dp">
+                <Button
+                    android:id="@+id/btnregistrar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:backgroundTint="@color/white"
+                    android:text="Registrarse"
+                    android:textSize="15sp"
+                    android:padding="9dp"
+                    android:textColor="@color/black"/>
+                <Button
+                    android:id="@+id/btnguardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button"
+                    android:text="Acceder"
+                    android:textSize="15sp"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginStart="20dp"
+                    android:padding="5dp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progressbarlogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/white"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

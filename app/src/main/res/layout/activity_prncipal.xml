@@ -3,26 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PrncipalActivity"
-    android:background="#06162E">
+    tools:context=".PrncipalActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:src="@drawable/pnglogotp"
-            android:contentDescription="logo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/orange"
+            android:layout_marginBottom="5dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:src="@drawable/logoblack"
+                android:contentDescription="Logo" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BOTÓN DE PÁNICO"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
         <TextView
             android:id="@+id/txtcorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="correo"
-            android:gravity="center"
-            android:textColor="@color/white"/>
+            android:gravity="center"/>
         <TextView
             android:id="@+id/txtlast"
             android:layout_width="match_parent"
@@ -59,25 +73,16 @@
             android:src="@drawable/botonnuevosinfondo"
             android:text="Localizar"
             android:layout_gravity="center"
-            android:contentDescription="Pánico" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BOTÓN DE PÁNICO"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:textColor="@color/white"
-            android:backgroundTint="#04400a"
-            android:background="@drawable/roundes_corners"
-            android:padding="20dp"/>
+            android:contentDescription="Pánico"
+            android:layout_marginBottom="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
             android:layout_marginBottom="15dp"
             android:gravity="center"
-            android:background="@drawable/roundes_corners">
+            android:background="@drawable/roundes_corners"
+            android:backgroundTint="@color/rojo">
             <ImageButton
                 android:id="@+id/btncerrarsesion"
                 android:layout_width="wrap_content"

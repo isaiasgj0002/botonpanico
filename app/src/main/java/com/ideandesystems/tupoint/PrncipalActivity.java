@@ -297,8 +297,10 @@ public class PrncipalActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 // Aquí puedes manejar el error de la petición
                 progressBar.setVisibility(View.INVISIBLE);
-                Toast.makeText(PrncipalActivity.this, "Se produjo un error, verifica tu conexion e intentalo de nuevo"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PrncipalActivity.this, error.getStackTrace().toString(), Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
+                Intent intent = new Intent(PrncipalActivity.this,ConfirmacionActivity.class);
+                startActivity(intent);
             }
         }) {
             @Override
