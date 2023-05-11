@@ -11,6 +11,8 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -129,6 +131,12 @@ public class PrncipalActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(PrncipalActivity.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                             1);
+                    return;
+                }
+                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+                if(networkInfo==null|| !networkInfo.isConnected()){
+                    Toast.makeText(getApplicationContext(), "No hay conexión a internet", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 verificarUbicacionActivada();
@@ -252,6 +260,7 @@ public class PrncipalActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("ERROR",error.getMessage());
+                correoView.setText("No tienes conexion");
                 error.printStackTrace();
             }
         }){
@@ -297,10 +306,10 @@ public class PrncipalActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 // Aquí puedes manejar el error de la petición
                 progressBar.setVisibility(View.INVISIBLE);
-                Toast.makeText(PrncipalActivity.this, error.getStackTrace().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PrncipalActivity.this, "Error: "+error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
-                Intent intent = new Intent(PrncipalActivity.this,ConfirmacionActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(PrncipalActivity.this,ConfirmacionActivity.class);
+                //startActivity(intent);
             }
         }) {
             @Override
