@@ -178,6 +178,7 @@ public class PrncipalActivity extends AppCompatActivity {
                 //Abrimos la pantalla de login
                 Intent intent = new Intent(PrncipalActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

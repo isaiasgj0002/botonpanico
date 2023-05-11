@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }else{
                     //Si las credenciales no existen en la base de datos, se mostrara un mensaje al usuario
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(MainActivity.this, "Usuario o password no existen", Toast.LENGTH_SHORT).show();
                 }
             }
