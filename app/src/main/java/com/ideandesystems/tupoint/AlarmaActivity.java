@@ -88,7 +88,11 @@ public class AlarmaActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String imagen = jsonObject.getString("imagen");
-                            Picasso.get().load(imagen).error(R.drawable.baseline_person_24).into(imgperfil);
+                            try{
+                                Picasso.get().load(imagen).error(R.drawable.baseline_person_24).into(imgperfil);
+                            }catch (Exception ex){
+                                ex.printStackTrace();
+                            }
                             String nombre = jsonObject.getString("nombre");
                             txtname.setText("Nombre del denunciante: "+nombre);
                             // Utiliza los datos obtenidos aquí

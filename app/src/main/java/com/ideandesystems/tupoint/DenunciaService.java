@@ -159,8 +159,7 @@ public class DenunciaService extends Service {
             bufferedReader.readLine();
             // Leer la segunda y tercera línea
             bufferedReader.readLine(); // ignorar la segunda línea
-            String thirdLine = bufferedReader.readLine();
-            cod_user = thirdLine;
+            cod_user = bufferedReader.readLine();
             bufferedReader.close();
         } catch (Exception e) {
             Log.i("Mensaje","El usuario no se logueo, archivo de texto no existe en almacenamiento");
@@ -178,7 +177,6 @@ public class DenunciaService extends Service {
         double dLon = Math.toRadians(longitudUsuario - longitud);
         double a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(Math.toRadians(latitudUsuario)) * Math.cos(Math.toRadians(latitud)) * Math.sin(dLon/2) * Math.sin(dLon/2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        double distancia = radioTierra * c;
-        return distancia;
+        return radioTierra * c;
     }
 }

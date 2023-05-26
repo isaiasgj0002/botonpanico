@@ -10,7 +10,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,10 +31,13 @@ public class RolValidator {
                         // Acción a realizar cuando se selecciona una opción
                         if (item == 0) {
                             updateRol(id, "https://tupoint.com/apk/rol.php","Policia",context);
+                            //saveRol("Policia", context);
                         } else if (item == 1) {
                             updateRol(id,"https://tupoint.com/apk/rol.php","Vigilante",context);
+                            //saveRol("Vigilante", context);
                         }else if(item==2){
                             updateRol(id,"https://tupoint.com/apk/rol.php","Usuario", context);
+                            //saveRol("Usuario",context);
                         }
                     });
                     AlertDialog dialog = builder.create();

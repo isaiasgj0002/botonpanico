@@ -13,6 +13,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -69,6 +70,7 @@ public class PrncipalActivity extends AppCompatActivity {
         obtenerNombre(correoUser);
         String cod_user = getIntent().getExtras().get("cod_user").toString();
         verificarUbicacionActivada();
+        verificarpermisos();
         Intent intent = new Intent(this, DenunciaService.class);
         String rolUsuario = RolValidator.getRol(this, cod_user, "https://tupoint.com/apk/rol.php");
         intent.putExtra("rol",rolUsuario);
@@ -158,9 +160,15 @@ public class PrncipalActivity extends AppCompatActivity {
         });
         boolean isServiceRunning = isMyServiceRunning(DenunciaService.class);
         if (isServiceRunning) {
+            Toast.makeText(this, "Se esta ejecutando", Toast.LENGTH_SHORT).show();
             Log.i("info","Se esta ejecuntando");
         } else {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No se estaba ejecutando", Toast.LENGTH_SHORT).show();
+            //Intent intent = new Intent(this, DenunciaService.class);
+            //String rolUsuario = RolValidator.getRol(this, cod_user, "https://tupoint.com/apk/rol.php");
+            //intent.putExtra("rol",rolUsuario);
+            //intent.putExtra("cod_user", cod_user);
+            //startService(intent);
         }
         btncerrarsesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +189,31 @@ public class PrncipalActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    private void verificarpermisos() {
+        if (ActivityCompat.checkSelfPermission(PrncipalActivity.this,
+                Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED) {
+            // Si no ha concedido permisos, solicitarlos
+            ActivityCompat.requestPermissions(PrncipalActivity.this,
+                    new String[]{Manifest.permission.RECEIVE_BOOT_COMPLETED},
+                    1);
+        }
+        if (ActivityCompat.checkSelfPermission(PrncipalActivity.this,
+                Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
+            // Si no ha concedido permisos, solicitarlos
+            ActivityCompat.requestPermissions(PrncipalActivity.this,
+                    new String[]{Manifest.permission.WAKE_LOCK},
+                    1);
+        }
+        if (ActivityCompat.checkSelfPermission(PrncipalActivity.this,
+                Manifest.permission.FOREGROUND_SERVICE) != PackageManager.PERMISSION_GRANTED) {
+            // Si no ha concedido permisos, solicitarlos
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                ActivityCompat.requestPermissions(PrncipalActivity.this,
+                        new String[]{Manifest.permission.FOREGROUND_SERVICE},
+                        1);
+            }
+        }
     }
     private void savePhone(String phoneNumber, String cod_user) {
         String url = "https://tupoint.com/apk/guardar_telefono.php";

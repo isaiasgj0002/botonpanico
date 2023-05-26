@@ -44,8 +44,7 @@
             android:textSize="20sp"
             android:text="Ultima Ubicacion registrada:"
             android:layout_marginStart="20dp"
-            android:visibility="gone"
-            android:textColor="@color/white"/>
+            android:visibility="gone" />
         <TextView
             android:id="@+id/txtlat"
             android:layout_width="match_parent"
@@ -53,8 +52,7 @@
             android:textSize="20sp"
             android:text="latitud"
             android:layout_marginLeft="20dp"
-            android:visibility="gone"
-            android:textColor="@color/white"/>
+            android:visibility="gone" />
         <TextView
             android:id="@+id/txtlong"
             android:layout_width="match_parent"
@@ -62,8 +60,7 @@
             android:textSize="20sp"
             android:text="longitud"
             android:layout_marginLeft="20dp"
-            android:visibility="gone"
-            android:textColor="@color/white"/>
+            android:visibility="gone" />
         <ImageButton
             android:id="@+id/btnlocate"
             android:layout_width="250dp"
