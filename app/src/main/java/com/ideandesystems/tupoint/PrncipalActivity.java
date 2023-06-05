@@ -3,6 +3,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -46,6 +48,7 @@ public class PrncipalActivity extends AppCompatActivity {
     TextView correoView, latView, longView, titulo;
     ImageButton btnactivar, btnphone, btncerrarsesion, openlink;
     ProgressBar progressBar;
+    private static final int REQUEST_LOCATION_PERMISSION = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,9 +76,14 @@ public class PrncipalActivity extends AppCompatActivity {
         verificarpermisos();
         Intent intent = new Intent(this, DenunciaService.class);
         String rolUsuario = RolValidator.getRol(this, cod_user, "https://tupoint.com/apk/rol.php");
-        intent.putExtra("rol",rolUsuario);
+        intent.putExtra("rol", rolUsuario);
         intent.putExtra("cod_user", cod_user);
-        startService(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(intent);
+        } else {
+            startService(intent);
+        }
+
         btnphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,27 +199,25 @@ public class PrncipalActivity extends AppCompatActivity {
         });
     }
     private void verificarpermisos() {
-        if (ActivityCompat.checkSelfPermission(PrncipalActivity.this,
-                Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED) {
-            // Si no ha concedido permisos, solicitarlos
-            ActivityCompat.requestPermissions(PrncipalActivity.this,
-                    new String[]{Manifest.permission.RECEIVE_BOOT_COMPLETED},
-                    1);
+        if(Build.VERSION.SDK_INT >=Build.VERSION_CODES.TIRAMISU){
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            }
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            }
         }
-        if (ActivityCompat.checkSelfPermission(PrncipalActivity.this,
-                Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
-            // Si no ha concedido permisos, solicitarlos
-            ActivityCompat.requestPermissions(PrncipalActivity.this,
-                    new String[]{Manifest.permission.WAKE_LOCK},
-                    1);
-        }
-        if (ActivityCompat.checkSelfPermission(PrncipalActivity.this,
-                Manifest.permission.FOREGROUND_SERVICE) != PackageManager.PERMISSION_GRANTED) {
-            // Si no ha concedido permisos, solicitarlos
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                ActivityCompat.requestPermissions(PrncipalActivity.this,
-                        new String[]{Manifest.permission.FOREGROUND_SERVICE},
-                        1);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                }, REQUEST_LOCATION_PERMISSION);
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
             }
         }
     }
