@@ -20,15 +20,6 @@
                 android:layout_height="90dp"
                 android:src="@drawable/logoblack"
                 android:contentDescription="Logo" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="BOTÓN DE PÁNICO"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:padding="10dp"
-                android:textStyle="bold"/>
         </LinearLayout>
         <TextView
             android:id="@+id/txtcorreo"
@@ -67,7 +58,7 @@
             android:layout_height="250dp"
             android:scaleType="fitXY"
             android:background="@color/transparent"
-            android:src="@drawable/botonnuevosinfondo"
+            android:src="@drawable/imgnew"
             android:text="Localizar"
             android:layout_gravity="center"
             android:contentDescription="Pánico"
