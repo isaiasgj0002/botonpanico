@@ -54,56 +54,53 @@
             android:visibility="gone" />
         <ImageButton
             android:id="@+id/btnlocate"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
             android:scaleType="fitXY"
             android:background="@color/transparent"
             android:src="@drawable/imgnew"
             android:text="Localizar"
             android:layout_gravity="center"
-            android:contentDescription="Pánico"
-            android:layout_marginBottom="10dp"/>
+            android:contentDescription="Pánico" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:background="@drawable/roundes_corners"
             android:backgroundTint="@color/rojo">
             <ImageButton
+                android:id="@+id/openlinkprincipal"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:text="Abrir web"
+                android:src="@drawable/baseline_recycling_24"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="0dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/verde"
+                android:contentDescription="openweb" />
+            <ImageButton
+                android:id="@+id/getphone"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:src="@drawable/baseline_phone_24"
+                android:textColor="@color/black"
+                android:layout_marginTop="0dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/amarillo"
+                android:contentDescription="Telefono" />
+            <ImageButton
                 android:id="@+id/btncerrarsesion"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
                 android:src="@drawable/baseline_logout_24"
                 android:text="Cerrar sesion"
                 android:layout_marginTop="0dp"
                 android:backgroundTint="@color/orange"
                 android:contentDescription="logout" />
-            <ImageButton
-                android:id="@+id/openlinkprincipal"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Abrir web"
-                android:src="@drawable/baseline_web_24"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:layout_marginTop="0dp"
-                android:layout_marginStart="10dp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/amarillo"
-                android:contentDescription="openweb" />
-            <ImageButton
-                android:id="@+id/getphone"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:src="@drawable/baseline_phone_24"
-                android:textColor="@color/black"
-                android:layout_marginTop="0dp"
-                android:layout_marginStart="10dp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/amarillo"
-                android:contentDescription="Telefono" />
         </LinearLayout>
         <ProgressBar
             android:id="@+id/progressbarreportar"
