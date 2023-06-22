@@ -1,9 +1,12 @@
 package com.ideandesystems.tupoint;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -49,12 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        if (ActivityCompat.checkSelfPermission(MainActivity.this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // Si no ha concedido permisos, solicitarlos
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    1);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+            if( ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                Intent intent = new Intent(MainActivity.this, PermisosActivity.class);
+                startActivity(intent);
+            }
         }
         CheckBox checkBoxShowPassword = findViewById(R.id.checkBoxShowPassword);
         progressBar = findViewById(R.id.progressbarlogin);
